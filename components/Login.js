@@ -36,13 +36,12 @@ export default function Login() {
                 body: JSON.stringify({ email, password }),
             });
             const data = await response.json()
-            if (!data.result) {
-                setError(data.error)
+            if (!data.result || !data.user?.token) {
+                console.error("Token manquant ou utilisateur non trouvé.", data);
+                setError(data.error || "Données de connexion incomplètes.");
+                return;
             }
-            if (!data.user.token) {
-                console.error("Token manquant dans les données utilisateur.", data.user);
-                return setMessage("Données de connexion incomplètes.");
-            }
+
             dispatch(login(data.user))
             setEmail("");
             setError("");
