@@ -21,7 +21,7 @@ function ArtistPage() {
 
         try {
             console.log("go get Artist by ID")
-            const response = await fetch(`http://sdlb-backend.vercel.app/artists/getartistbyid/${id}`, {
+            const response = await fetch(`https://sdlb-backend.vercel.app/artists/getartistbyid/${id}`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${user.token}`,

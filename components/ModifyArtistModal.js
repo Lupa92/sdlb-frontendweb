@@ -56,7 +56,7 @@ export default function ModifyArtistModal({ artist, onClose, token, refreshArtis
             })
         );
         try {
-            const res = await fetch(`http://sdlb-backend.vercel.app/artists/${artist._id}`, {
+            const res = await fetch(`https://sdlb-backend.vercel.app/artists/${artist._id}`, {
                 method: "PUT",
                 body: formData,
             });

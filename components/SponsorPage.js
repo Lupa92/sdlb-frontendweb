@@ -17,7 +17,7 @@ export default function SponsorPage() {
 
     async function fetchSponsors() {
         try {
-            const response = await fetch(`http://sdlb-backend.vercel.app/sponsors/getsponsors/${user.token}`)
+            const response = await fetch(`https://sdlb-backend.vercel.app/sponsors/getsponsors/${user.token}`)
             const data = await response.json();
             if (data.result) {
                 setSponsors(data.sponsors);
@@ -33,7 +33,7 @@ export default function SponsorPage() {
 
     async function onDelete(sponsorId) {
         try {
-            const response = await fetch(`http://sdlb-backend.vercel.app/sponsors/delete/${sponsorId}`, {
+            const response = await fetch(`https://sdlb-backend.vercel.app/sponsors/delete/${sponsorId}`, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ token: user.token }),

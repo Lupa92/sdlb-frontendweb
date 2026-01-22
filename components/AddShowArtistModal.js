@@ -31,7 +31,7 @@ export default function AddShowArtistModal({ onClose, artists, token, refreshSho
             showId: show._id,
         };
         try {
-            const response = await fetch("http://sdlb-backend.vercel.app/showsArtists/new", {
+            const response = await fetch("https://sdlb-backend.vercel.app/showsArtists/new", {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body),

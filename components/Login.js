@@ -28,7 +28,7 @@ export default function Login() {
         setLoading(true);
 
         try {
-            const response = await fetch('http://sdlb-backend.vercel.app/users/signin', {
+            const response = await fetch('https://sdlb-backend.vercel.app/users/signin', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

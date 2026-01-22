@@ -65,7 +65,7 @@ export default function AddNewsModal({ onClose, token, fetchNews }) {
         }
 
         try {
-            const res = await fetch("http://sdlb-backend.vercel.app/news/new", {
+            const res = await fetch("https://sdlb-backend.vercel.app/news/new", {
                 method: "POST",
                 body: formData,
             });
