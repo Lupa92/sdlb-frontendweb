@@ -1,0 +1,76 @@
+.container {
+  padding: 2rem;
+}
+
+.pageTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #68c6e1;
+  margin-bottom: 2rem;
+}
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* Scroll horizontal */
+.scrollContainer {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+/* Placeholder de card artiste */
+.artistCardPlaceholder {
+  min-width: 180px;
+  height: 220px;
+  background: #f5f5f5;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #999;
+  flex-shrink: 0;
+}
+
+/* Bouton CTA */
+.addButton {
+  padding: 0.8rem 1.4rem;
+  background: #68c6e1;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.addButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(104, 198, 225, 0.4);
+}
+.searchInput {
+    width: 100%;
+    padding: 8px 12px;
+    margin: 10px 0 20px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: #4f46e5; /* violet doux ou ta couleur principale */
+    box-shadow: 0 0 5px rgba(79, 70, 229, 0.3);
+}

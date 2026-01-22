@@ -1,22 +1,78 @@
-.main {
+.container {
+  padding: 2rem;
+  /* max-width: 1200px; */
+  margin: 0 auto;
+}
+
+.pageTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #68c6e1;
+  text-align: left;
+  margin-bottom: 3rem;
+}
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+/* Countdown */
+.countdown {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: left;
+  gap: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+}
+
+.countdown div {
+  background: linear-gradient(135deg, #c13cBe, #f9b226);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 16px;
+  min-width: 80px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  font-size: 1.4rem;
+}
+
+/* Cards container */
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Card style */
+.card {
+  height: 180px;
+  border-radius: 20px;
+  display: flex;
   align-items: center;
-  min-height: 100vh;
-  padding: 4rem 0;
+  justify-content: center;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
 
-.title {
-  line-height: 1.15;
-  font-size: 4rem;
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.25);
 }
 
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title a:hover, .title a:focus, .title a:active {
-  text-decoration: underline;
+.cardLabel {
+  text-align: center;
+  pointer-events: none;
 }

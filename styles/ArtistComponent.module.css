@@ -1,0 +1,135 @@
+.container {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  color: #333;
+}
+
+.title {
+  text-align: left;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #68c6E1;
+}
+
+.header {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.name {
+  font-size: 1.6rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  gap: 0.5rem;
+}
+
+.masterIcon {
+  font-size: 1.2rem;
+}
+
+.role {
+  display: block;
+  font-size: 1rem;
+  color: #666;
+  margin-top: 0.2rem;
+}
+
+.photoWrapper {
+  display: flex;
+  justify-content: left;
+  margin-bottom: 2rem;
+}
+
+.photo {
+  max-width: 300px;
+  width: 100%;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+.videosSection {
+  margin-bottom: 2rem;
+}
+
+.sectionTitle {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.videosScroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.video {
+  min-width: 300px;
+  height: 170px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.socialsSection {
+  margin-bottom: 2rem;
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+  justify-content: left;
+}
+
+.socialIcon {
+  font-size: 1.5rem;
+  color: #68c6E1;
+  transition: transform 0.1s ease;
+}
+
+.socialIcon:hover {
+  transform: scale(1.2);
+}
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.4rem 0.8rem;
+  background: #68c6e1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.backButton:hover {
+  transform: translateY(-1px);
+  background: #57b2d3;
+}
+.socialItem{
+  display: flex;
+  flex-direction: row;
+  gap : 20px;
+}
+.editButton{
+  padding: 0.8rem 1.4rem;
+  background: #68c6e1;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+.editButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(104, 198, 225, 0.4);
+}

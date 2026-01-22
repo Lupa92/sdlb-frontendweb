@@ -1,0 +1,121 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+/* Modale */
+.modal {
+  width: 80%;
+  max-width: 900px;
+  max-height: 90vh;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Titre */
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+/* Champs communs */
+.modal input,
+.modal select,
+.modal textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  outline: none;
+}
+
+.modal input:focus,
+.modal select:focus,
+.modal textarea:focus {
+  border-color: #c13c8e;
+}
+
+/* Description */
+.modal textarea {
+  resize: none;
+  min-height: 100px;
+}
+
+/* Preview photo */
+.preview {
+  width: 140px;
+  height: auto;
+  border-radius: 14px;
+  object-fit: cover;
+  margin: 8px 0;
+  align-self: center;
+}
+
+/* Section vidéos */
+.modal button {
+  cursor: pointer;
+}
+
+/* Bouton ajouter vidéo */
+.addVideoButton {
+  align-self: flex-start;
+  background: transparent;
+  border: none;
+  color: #c13c8e;
+  font-weight: bold;
+  padding: 4px 0;
+}
+
+/* Réseaux sociaux */
+.socialsGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Actions en bas */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* Bouton fermer */
+.closeButton {
+  flex: 1;
+  background: #f1f1f1;
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  font-weight: bold;
+}
+
+/* Bouton sauvegarder */
+.saveButton {
+  flex: 1;
+  background: #c13c8e;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  font-weight: bold;
+}
+
+.saveButton:hover {
+  opacity: 0.9;
+}
+

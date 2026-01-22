@@ -1,0 +1,74 @@
+.container {
+  padding: 1.5rem;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.4rem 0.8rem;
+  background: #68c6e1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.backButton:hover {
+  transform: translateY(-1px);
+  background: #57b2d3;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #68c6e1;
+}
+
+.infoCard {
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.01rem;
+}
+.info{
+  margin : 0.5rem;
+}
+
+.artistsSection {
+  margin-top: 1rem;
+}
+
+.artistsList {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 0.5rem 0;
+}
+
+.actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.addButton, .editButton {
+  background: #68c6e1;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.addButton:hover, .editButton:hover {
+  background: #5aa8c4;
+}

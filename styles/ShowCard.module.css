@@ -1,0 +1,77 @@
+.card {
+  min-width: 200px;
+  height: 140px;
+  background: #ffff;
+  border-radius: 14px;
+  /* border: 10px solid #68c6e1; */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  transition: transform 0.1s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.header {
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  display: flex;
+  width: 100%;
+  padding: 0 0.2rem;
+}
+
+.number {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.status {
+  font-weight: bold;
+  font-size: 0.8rem;
+  color: #fff;
+  background: #c13c8e;
+  border-radius: 6px;
+  padding: 0.1rem 0.4rem;
+  text-transform: uppercase;
+}
+
+.timeWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.time {
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.deleteButton {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  border: none;
+  color: #c13c8e;
+  border-radius: 6px;
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  background-color: #ffff;
+}
+
+.deleteButton:hover {
+  color: #f9b226;
+}
