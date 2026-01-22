@@ -8,7 +8,7 @@ export default function ShowArtistCard({ showArtist, refreshShow, token }) {
 
     async function onDelete(showArtistId) {
         try {
-            const response = await fetch(`http://localhost:3000/showsArtists/delete/${showArtistId}`, {
+            const response = await fetch(`http://sdlb-backend.vercel.app/showsArtists/delete/${showArtistId}`, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ token: token }),

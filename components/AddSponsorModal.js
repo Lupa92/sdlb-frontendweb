@@ -24,7 +24,7 @@ export default function AddSponsorModal({ onClose, token, fetchSponsors }) {
         if (logo) formData.append("photo", logo);
 
         try {
-            const res = await fetch("http://localhost:3000/sponsors/new", {
+            const res = await fetch("http://sdlb-backend.vercel.app/sponsors/new", {
                 method: "POST",
                 body: formData,
             });

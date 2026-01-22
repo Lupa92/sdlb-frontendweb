@@ -23,7 +23,7 @@ function ShowPage() {
 
         try {
             console.log("go get Show by ID")
-            const response = await fetch(`http://localhost:3000/shows/getshowbyid/${id}`, {
+            const response = await fetch(`http://sdlb-backend.vercel.app/shows/getshowbyid/${id}`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${user.token}`,

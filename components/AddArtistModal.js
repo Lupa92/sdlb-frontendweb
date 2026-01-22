@@ -60,7 +60,7 @@ export default function AddArtistModal({ onClose, token, fetchArtists }) {
             })
         );
         try {
-            const res = await fetch("http://localhost:3000/artists/new", {
+            const res = await fetch("http://sdlb-backend.vercel.app/artists/new", {
                 method: "POST",
                 body: formData, // multipart/form-data auto
             });

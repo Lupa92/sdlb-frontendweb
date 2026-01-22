@@ -36,7 +36,7 @@ export default function AddShowModal({ onClose, token, mastersList, fetchShows }
             status,
         };
         try {
-            const response = await fetch("http://localhost:3000/shows/new", {
+            const response = await fetch("http://sdlb-backend.vercel.app/shows/new", {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body),

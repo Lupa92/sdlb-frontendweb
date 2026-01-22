@@ -17,7 +17,7 @@ export default function Show() {
 
     async function fetchShows() {
         try {
-            const response = await fetch(`http://localhost:3000/shows/getshows/${user.token}`)
+            const response = await fetch(`http://sdlb-backend.vercel.app/shows/getshows/${user.token}`)
             const data = await response.json();
             if (data.result) {
                 console.log("data", data)
@@ -37,7 +37,7 @@ export default function Show() {
 
     async function onDelete(showId) {
         try {
-            const response = await fetch(`http://localhost:3000/shows/delete/${showId}`, {
+            const response = await fetch(`http://sdlb-backend.vercel.app/shows/delete/${showId}`, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ token: user.token }),

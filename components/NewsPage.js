@@ -18,7 +18,7 @@ export default function NewsPage() {
 
     async function fetchNews() {
         try {
-            const response = await fetch(`http://localhost:3000/news/getnews/${user.token}`)
+            const response = await fetch(`http://sdlb-backend.vercel.app/news/getnews/${user.token}`)
             const data = await response.json();
             if (data.result) {
                 setNews(data.newsList);
@@ -34,7 +34,7 @@ export default function NewsPage() {
 
     async function onDelete(newsId) {
         try {
-            const response = await fetch(`http://localhost:3000/news/delete/${newsId}`, {
+            const response = await fetch(`http://sdlb-backend.vercel.app/news/delete/${newsId}`, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ token: user.token }),

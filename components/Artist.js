@@ -18,7 +18,7 @@ export default function Artist() {
 
     async function fetchArtists() {
         try {
-            const response = await fetch(`http://localhost:3000/artists/getartists/${user.token}`)
+            const response = await fetch(`http://sdlb-backend.vercel.app/artists/getartists/${user.token}`)
             const data = await response.json();
             console.log("data", data)
             if (data.result) {
@@ -37,7 +37,7 @@ export default function Artist() {
 
     async function onDelete(artistId) {
         try {
-            const response = await fetch(`http://localhost:3000/artists/delete/${artistId}`, {
+            const response = await fetch(`http://sdlb-backend.vercel.app/artists/delete/${artistId}`, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ token: user.token }),

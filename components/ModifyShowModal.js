@@ -46,7 +46,7 @@ export default function ModifyShowModal({
 
         try {
             const response = await fetch(
-                `http://localhost:3000/shows/${show._id}`,
+                `http://sdlb-backend.vercel.app/shows/${show._id}`,
                 {
                     method: "PUT",
                     headers: {
