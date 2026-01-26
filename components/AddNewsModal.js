@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { showFeedback } from "../reducers/feedback";
 
 const internalPages = [
-    "show",
+    "shows",
     "food",
     "home",
     "news",
