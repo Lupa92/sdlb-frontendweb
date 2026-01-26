@@ -3,6 +3,23 @@ import style from "../styles/AddModal.module.css";
 import { useDispatch } from "react-redux";
 import { showFeedback } from "../reducers/feedback";
 
+const internalPages = [
+    "show",
+    "food",
+    "home",
+    "news",
+    "tickets",
+    "infos",
+    "dates",
+    "howtocome",
+    "accessibilité",
+    "ticketinfo",
+    "plan",
+    "faq",
+    "sponsors",
+];
+
+
 export default function AddNewsModal({ onClose, token, fetchNews }) {
     const dispatch = useDispatch();
 
@@ -130,12 +147,30 @@ export default function AddNewsModal({ onClose, token, fetchNews }) {
                             value={button.label}
                             onChange={(e) => handleButtonChange("label", e.target.value)}
                         />
-                        <input
-                            type="text"
-                            placeholder="Lien"
-                            value={button.link}
-                            onChange={(e) => handleButtonChange("link", e.target.value)}
-                        />
+                        <div className={style.inputWithIcon}>
+                            <input
+                                type="text"
+                                placeholder="Lien"
+                                value={button.link}
+                                onChange={(e) => handleButtonChange("link", e.target.value)}
+                            />
+                            <span
+                                className={style.infoIcon}
+                                data-tooltip={
+                                    button.type === "INTERNAL"
+                                        ? `Pour un lien interne, entrez le nom exact de la page parmi : ${internalPages.join(", ")}`
+                                        : "Entrez l'URL complète pour un lien externe"
+                                }
+                            >
+                                i
+                            </span>
+                        </div>
+                        {/* Message de validation si type INTERNAL */}
+                        {button.type === "INTERNAL" && button.link && !internalPages.includes(button.link) && (
+                            <small className={style.errorText}>
+                                Nom de page invalide ! Choisissez parmi : {internalPages.join(", ")}
+                            </small>
+                        )}
                         <select value={button.type} onChange={(e) => handleButtonChange("type", e.target.value)}>
                             <option value="">Sélectionnez le type</option>
                             <option value="INTERNAL">Interne</option>

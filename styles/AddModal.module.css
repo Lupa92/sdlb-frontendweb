@@ -108,3 +108,51 @@
   font-weight: bold;
   cursor: pointer;
 }
+.inputWithIcon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.inputWithIcon input {
+  flex: 1;
+}
+
+.infoIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #68c6e1;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Tooltip */
+.infoIcon::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: -5px;
+  left: 105%;
+  background: #333;
+  color: #fff;
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: opacity 0.2s;
+  z-index: 10;
+}
+
+.infoIcon:hover::after {
+  opacity: 1;
+}
