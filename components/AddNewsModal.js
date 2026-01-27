@@ -89,6 +89,7 @@ export default function AddNewsModal({ onClose, token, fetchNews }) {
 
             const data = await res.json();
             if (data.result) {
+                console.log(data)
                 dispatch(showFeedback({ message: "Actualité ajoutée avec succès !", type: "success" }));
                 fetchNews();
                 onClose();
