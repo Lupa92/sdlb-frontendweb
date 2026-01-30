@@ -3,7 +3,7 @@ import style from "../styles/SponsorCard.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-export default function SponsorCard({ sponsor, onDelete }) {
+export default function SponsorCard({ sponsor, onAskDelete }) {
     return (
         <div className={style.card}>
             <div className={style.header}>
@@ -24,7 +24,10 @@ export default function SponsorCard({ sponsor, onDelete }) {
 
             <button
                 className={style.deleteButton}
-                onClick={() => onDelete(sponsor._id)}
+                onClick={(e) => {
+                    e.stopPropagation();
+                    onAskDelete();
+                }}
             >
                 <FontAwesomeIcon icon={faTrash} />
             </button>

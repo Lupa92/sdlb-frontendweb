@@ -3,6 +3,8 @@ import style from "../styles/SponsorsPage.module.css";
 import AddSponsorModal from "./AddSponsorModal";
 import SponsorCard from "./SponsorCard";
 import { useSelector } from "react-redux";
+import ConfirmModal from "./ConfirmModal";
+
 
 export default function SponsorPage() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -10,6 +12,8 @@ export default function SponsorPage() {
     const user = useSelector((state) => state.user.value);
     const [search, setSearch] = useState("");
     const [loading, setLoading] = useState(true);
+    const [confirmOpen, setConfirmOpen] = useState(false);
+    const [sponsorToDelete, setSponsorToDelete] = useState(null);
 
     useEffect(() => {
         if (user?.token) fetchSponsors();
@@ -29,6 +33,17 @@ export default function SponsorPage() {
         } finally {
             setLoading(false)
         }
+    }
+    function askDelete(sponsor) {
+        setSponsorToDelete(sponsor);
+        setConfirmOpen(true);
+    }
+    async function confirmDelete() {
+        if (!sponsorToDelete) return;
+
+        await onDelete(sponsorToDelete._id);
+        setConfirmOpen(false);
+        setSponsorToDelete(null);
     }
 
     async function onDelete(sponsorId) {
@@ -51,7 +66,7 @@ export default function SponsorPage() {
 
     let sponsorsToDisplay = filteredSponsors.map((s) => {
         return (
-            <SponsorCard sponsor={s} onDelete={onDelete} key={s._id} />
+            <SponsorCard sponsor={s} key={s._id} onAskDelete={() => askDelete(s)} />
         )
     })
 
@@ -92,6 +107,13 @@ export default function SponsorPage() {
             {isModalOpen && (
                 <AddSponsorModal onClose={() => setIsModalOpen(false)} token={user.token} fetchSponsors={fetchSponsors} />
             )}
+            <ConfirmModal
+                isOpen={confirmOpen}
+                title="Supprimer le partenaire"
+                message={`Es-tu sûr de vouloir supprimer "${sponsorToDelete?.name}" ?`}
+                onConfirm={confirmDelete}
+                onCancel={() => setConfirmOpen(false)}
+            />
         </div>
     );
 }

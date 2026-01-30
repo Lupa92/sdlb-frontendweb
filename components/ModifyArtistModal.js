@@ -18,6 +18,8 @@ export default function ModifyArtistModal({ artist, onClose, token, refreshArtis
         instagram: artist.socials?.instagram || "",
         facebook: artist.socials?.facebook || "",
         youtube: artist.socials?.youtube || "",
+        tiktok: artist.socials?.tiktok || "",
+        web: artist.socials?.web || "",
     });
 
     const handleAddVideo = () => {
@@ -53,6 +55,8 @@ export default function ModifyArtistModal({ artist, onClose, token, refreshArtis
                 instagram: socials.instagram,
                 facebook: socials.facebook,
                 youtube: socials.youtube,
+                tiktok: socials.tiktok,
+                web: socials.web,
             })
         );
         try {
@@ -181,6 +185,22 @@ export default function ModifyArtistModal({ artist, onClose, token, refreshArtis
                             setSocials({ ...socials, youtube: e.target.value })
                         }
                         placeholder="YouTube"
+                    />
+                    <input
+                        className={style.input}
+                        value={socials.tiktok}
+                        onChange={(e) =>
+                            setSocials({ ...socials, tiktok: e.target.value })
+                        }
+                        placeholder="tiktok"
+                    />
+                    <input
+                        className={style.input}
+                        value={socials.web}
+                        onChange={(e) =>
+                            setSocials({ ...socials, web: e.target.value })
+                        }
+                        placeholder="web"
                     />
                 </div>
 

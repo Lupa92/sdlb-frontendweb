@@ -3,6 +3,8 @@ import style from "../styles/Show.module.css";
 import AddShowModal from "./AddShowModal";
 import ShowCard from "./ShowCard";
 import { useSelector } from "react-redux";
+import ConfirmModal from "./ConfirmModal";
+
 
 export default function Show() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -10,6 +12,8 @@ export default function Show() {
     const [mastersList, setMastersList] = useState([])
     const user = useSelector((state) => state.user.value);
     const [loading, setLoading] = useState(true);
+    const [confirmOpen, setConfirmOpen] = useState(false);
+    const [showToDelete, setShowToDelete] = useState(null);
 
     useEffect(() => {
         if (user?.token) fetchShows();
@@ -35,6 +39,18 @@ export default function Show() {
         }
     }
 
+    function askDelete(show) {
+        setShowToDelete(show);
+        setConfirmOpen(true);
+    }
+    async function confirmDelete() {
+        if (!showToDelete) return;
+
+        await onDelete(showToDelete._id);
+        setConfirmOpen(false);
+        setShowToDelete(null);
+    }
+
     async function onDelete(showId) {
         try {
             const response = await fetch(`https://sdlb-backend.vercel.app/shows/delete/${showId}`, {
@@ -53,7 +69,7 @@ export default function Show() {
 
     let showToDisplay = shows.map((a) => {
         return (
-            <ShowCard show={a} onDelete={onDelete} key={a._id} />
+            <ShowCard show={a} onDelete={onDelete} key={a._id} onAskDelete={() => askDelete(a)} />
         )
     })
 
@@ -89,6 +105,13 @@ export default function Show() {
             {isModalOpen && (
                 <AddShowModal onClose={() => setIsModalOpen(false)} token={user.token} fetchShows={fetchShows} mastersList={mastersList} />
             )}
+            <ConfirmModal
+                isOpen={confirmOpen}
+                title="Supprimer le plateau"
+                message={`Es-tu sûr de vouloir supprimer le plateau ${showToDelete?.number} ?`}
+                onConfirm={confirmDelete}
+                onCancel={() => setConfirmOpen(false)}
+            />
         </div>
     );
 }

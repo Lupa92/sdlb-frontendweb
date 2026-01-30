@@ -1,20 +1,24 @@
 import React from "react";
 import style from "../styles/ArtistComponent.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faTrash, faCrown } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faTrash, faCrown, faGlobe } from "@fortawesome/free-solid-svg-icons";
 import {
     faInstagram as faInstagramBrand,
     faFacebook as faFacebookBrand,
-    faYoutube as faYoutubeBrand
+    faYoutube as faYoutubeBrand,
+    faTiktok as faTiktokBrand,
 } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import ModifyArtistModal from "./ModifyArtistModal";
+import ConfirmModal from "./ConfirmModal";
 
 
 export default function ArtistComponent({ artist, refreshArtist, token }) {
     const router = useRouter();
     const [showModifyModal, setShowModifyModal] = useState(false);
+    const [confirmOpen, setConfirmOpen] = useState(false);
+    const [artistToDelete, setArtistToDelete] = useState(null);
 
     if (!artist) return <p>Chargement...</p>;
 
@@ -35,11 +39,15 @@ export default function ArtistComponent({ artist, refreshArtist, token }) {
 
     let youtube;
     if (artist.socials.youtube) {
-        facebook = getYoutubeEmbedUrl(artist.socials.youtube)
+        youtube = getYoutubeEmbedUrl(artist.socials.youtube)
     }
     let instagram;
     if (artist.socials.instagram) {
-        facebook = getYoutubeEmbedUrl(artist.socials.instagram)
+        instagram = getYoutubeEmbedUrl(artist.socials.instagram)
+    }
+    let tiktok;
+    if (artist.socials.tiktok) {
+        tiktok = getYoutubeEmbedUrl(artist.socials.tiktok)
     }
 
     let role;
@@ -126,6 +134,24 @@ export default function ArtistComponent({ artist, refreshArtist, token }) {
                                     <FontAwesomeIcon icon={faYoutubeBrand} className={style.socialIcon} />
                                 </a>
                                 <div> {artist.socials.youtube} </div>
+                            </div>
+                        )}
+                        {artist.socials.tiktok && (
+
+                            <div className={style.socialItem}>
+                                <a href={tiktok} target="_blank" rel="noreferrer">
+                                    <FontAwesomeIcon icon={faTiktokBrand} className={style.socialIcon} />
+                                </a>
+                                <div> {artist.socials.tiktok} </div>
+                            </div>
+                        )}
+                        {artist.socials.web && (
+
+                            <div className={style.socialItem}>
+
+                                <FontAwesomeIcon icon={faGlobe} className={style.socialIcon} />
+
+                                <div> {artist.socials.web} </div>
                             </div>
                         )}
                     </div>

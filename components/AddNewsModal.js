@@ -53,7 +53,7 @@ export default function AddNewsModal({ onClose, token, fetchNews }) {
 
     async function handleCreate() {
         // Validation des champs obligatoires
-        if (!title.trim() || !subtitle.trim() || !description.trim()) {
+        if (!title.trim() || !description.trim()) {
             dispatch(showFeedback({ message: "Tous les champs obligatoires doivent être remplis", type: "error" }));
             return;
         }
@@ -114,7 +114,7 @@ export default function AddNewsModal({ onClose, token, fetchNews }) {
                     </label>
 
                     <label>
-                        Sous-titre *
+                        Sous-titre
                         <input type="text" value={subtitle} onChange={(e) => setSubtitle(e.target.value)} placeholder="Sous-titre" />
                     </label>
 
@@ -183,11 +183,11 @@ export default function AddNewsModal({ onClose, token, fetchNews }) {
                     </div>
 
                     <div className={style.actions}>
-                        <button type="button" className={style.createButton} onClick={handleCreate}>
-                            Créer
-                        </button>
                         <button type="button" className={style.closeButton} onClick={onClose}>
                             Fermer
+                        </button>
+                        <button type="button" className={style.createButton} onClick={handleCreate}>
+                            Créer
                         </button>
                     </div>
                 </div>

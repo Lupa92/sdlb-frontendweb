@@ -3,23 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import style from "../styles/ShowArtistCard.module.css";
 
-export default function ShowArtistCard({ showArtist, refreshShow, token }) {
+export default function ShowArtistCard({ showArtist, onAskDelete }) {
     const { artist, title, duration, order } = showArtist;
 
-    async function onDelete(showArtistId) {
-        try {
-            const response = await fetch(`https://sdlb-backend.vercel.app/showsArtists/delete/${showArtistId}`, {
-                method: "DELETE",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ token: token }),
-            })
-            const data = await response.json();
-            refreshShow()
 
-        } catch (error) {
-            console.error(error);
-        }
-    }
     function handleDelete(e) {
         e.stopPropagation(); // évite les clics parasites
         if (onDelete) {
@@ -41,7 +28,10 @@ export default function ShowArtistCard({ showArtist, refreshShow, token }) {
             )}
             <button
                 className={style.deleteButton}
-                onClick={handleDelete}
+                onClick={(e) => {
+                    e.stopPropagation(); // empêche la navigation
+                    onAskDelete();
+                }}
                 aria-label="Supprimer le créneau artiste"
             >
                 <FontAwesomeIcon icon={faTrash} />

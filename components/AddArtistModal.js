@@ -2,6 +2,8 @@ import { useState } from "react";
 import style from "../styles/AddModal.module.css";
 import { showFeedback } from "../reducers/feedback";
 import { useDispatch } from "react-redux";
+import imageCompression from "browser-image-compression"
+
 
 export default function AddArtistModal({ onClose, token, fetchArtists }) {
     const dispatch = useDispatch()
@@ -15,6 +17,8 @@ export default function AddArtistModal({ onClose, token, fetchArtists }) {
         instagram: "",
         facebook: "",
         youtube: "",
+        tiktok: "",
+        web: "",
     });
     // Ajouter un input vidéo (max 4)
     const addVideoInput = () => {
@@ -26,11 +30,20 @@ export default function AddArtistModal({ onClose, token, fetchArtists }) {
         newVideos[index] = value;
         setVideos(newVideos);
     };
-
+    const MAX_INPUT_MB = 10;
     // Gestion photo upload
     const handlePhotoChange = (e) => {
-        if (e.target.files[0]) setPhoto(e.target.files[0]);
+        const file = e.target.files[0];
+        if (!file) return;
+
+        if (file.size / 1024 / 1024 > MAX_INPUT_MB) {
+            dispatch(showFeedback({ message: `Image trop lourde (max ${MAX_INPUT_MB}MB)`, type: 'error' }));
+            return;
+        }
+
+        setPhoto(file);
     };
+
 
     // Gestion socials
     const handleSocialChange = (key, value) => {
@@ -46,7 +59,32 @@ export default function AddArtistModal({ onClose, token, fetchArtists }) {
         formData.append("description", description);
 
         if (photo) {
-            formData.append("photo", photo)
+            const options = {
+                maxSizeMB: 3.5,
+                maxWidthOrHeight: 1920,
+                useWebWorker: true,
+                initialQuality: 0.8,
+            }
+            try {
+                const compressedFile = await imageCompression(photo, options)
+
+                console.log("Avant :", (photo.size / 1024 / 1024).toFixed(2), "MB")
+                console.log("Après :", (compressedFile.size / 1024 / 1024).toFixed(2), "MB")
+
+                if (compressedFile.size / 1024 / 1024 > 3.5) {
+                    dispatch(showFeedback({ message: "Image trop lourde après la compression, Merci de sélectionner une image plus légère", type: 'error' }));
+                    return
+                }
+                formData.append("photo", compressedFile)
+
+            } catch (err) {
+                console.error("Erreur compression", err)
+                dispatch(showFeedback({
+                    message: "Erreur lors de la compression de l'image",
+                    type: "error",
+                }))
+                return
+            }
         }
         videos.forEach((v) => {
             formData.append("videos", v)
@@ -57,12 +95,14 @@ export default function AddArtistModal({ onClose, token, fetchArtists }) {
                 instagram: socials.instagram,
                 facebook: socials.facebook,
                 youtube: socials.youtube,
+                tiktok: socials.tiktok,
+                web: socials.web,
             })
         );
         try {
             const res = await fetch("https://sdlb-backend.vercel.app/artists/new", {
                 method: "POST",
-                body: formData, // multipart/form-data auto
+                body: formData,
             });
 
             const data = await res.json();
@@ -89,7 +129,7 @@ export default function AddArtistModal({ onClose, token, fetchArtists }) {
 
                 <div className={style.form}>
                     <label>
-                        Prénom
+                        Prénom *
                         <input
                             type="text"
                             value={firstName}
@@ -109,7 +149,7 @@ export default function AddArtistModal({ onClose, token, fetchArtists }) {
                     </label>
 
                     <label>
-                        Rôle
+                        Rôle *
                         <select value={role} onChange={(e) => setRole(e.target.value)}>
                             <option value="MASTER">Maître de cérémonie</option>
                             <option value="ARTIST">Artiste</option>
@@ -170,14 +210,26 @@ export default function AddArtistModal({ onClose, token, fetchArtists }) {
                             value={socials.youtube}
                             onChange={(e) => handleSocialChange("youtube", e.target.value)}
                         />
+                        <input
+                            type="text"
+                            placeholder="TikTok"
+                            value={socials.tiktok}
+                            onChange={(e) => handleSocialChange("tiktok", e.target.value)}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Site Internet"
+                            value={socials.web}
+                            onChange={(e) => handleSocialChange("web", e.target.value)}
+                        />
                     </div>
 
                     <div className={style.actions}>
-                        <button type="button" className={style.createButton} onClick={handleCreate}>
-                            Créer
-                        </button>
                         <button type="button" className={style.closeButton} onClick={onClose}>
                             Fermer
+                        </button>
+                        <button type="button" className={style.createButton} onClick={handleCreate}>
+                            Créer
                         </button>
                     </div>
                 </div>

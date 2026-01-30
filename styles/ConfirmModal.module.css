@@ -1,71 +1,39 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.4);
+
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   z-index: 1000;
 }
 
 .modal {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 24px;
-  width: 100%;
-  max-width: 360px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.2s ease;
-}
-
-.title {
-  margin: 0 0 8px;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.message {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
 }
 
 .actions {
   display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-}
-
-.button {
-  border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 14px;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
 .cancel {
-  background: #f1f1f1;
-  color: #333;
+  background: #eee;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
 }
 
-.primary {
-  background: #2563eb;
+.confirm {
+  background: #c13c8e;
   color: white;
-}
-
-.danger {
-  background: #dc2626;
-  color: white;
-}
-
-@keyframes fadeIn {
-  from {
-    transform: translateY(10px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
 }

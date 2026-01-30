@@ -66,11 +66,11 @@ export default function AddSponsorModal({ onClose, token, fetchSponsors }) {
                     </label>
 
                     <div className={style.actions}>
-                        <button type="button" className={style.createButton} onClick={handleCreate}>
-                            Créer
-                        </button>
                         <button type="button" className={style.closeButton} onClick={onClose}>
                             Fermer
+                        </button>
+                        <button type="button" className={style.createButton} onClick={handleCreate}>
+                            Créer
                         </button>
                     </div>
                 </div>

@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import style from "../styles/NewsCard.module.css";
 
-export default function NewsCard({ news, onDelete }) {
+export default function NewsCard({ news, onAskDelete }) {
+
     // Tronquer la description à 30 caractères
     const shortDescription =
         news.description.length > 30
@@ -27,7 +28,7 @@ export default function NewsCard({ news, onDelete }) {
             </div>
             <button
                 className={style.deleteButton}
-                onClick={() => onDelete(news._id)}
+                onClick={() => onAskDelete()}
             >
                 <FontAwesomeIcon icon={faTrash} />
             </button>

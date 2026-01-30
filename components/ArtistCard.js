@@ -5,7 +5,7 @@ import { faTrash, faCrown } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-export default function ArtistCard({ artist, onDelete }) {
+export default function ArtistCard({ artist, onAskDelete }) {
     const router = useRouter();
 
     const handleClick = () => {
@@ -41,7 +41,7 @@ export default function ArtistCard({ artist, onDelete }) {
                 className={style.deleteButton}
                 onClick={(e) => {
                     e.stopPropagation(); // empêche la navigation
-                    onDelete(artist._id);
+                    onAskDelete();
                 }}
             >
                 <FontAwesomeIcon icon={faTrash} />

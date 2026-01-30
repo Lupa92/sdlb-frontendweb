@@ -12,6 +12,9 @@ export default function Artist() {
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState("");
 
+    const [confirmOpen, setConfirmOpen] = useState(false);
+    const [artistToDelete, setArtistToDelete] = useState(null);
+
     useEffect(() => {
         if (user?.token) fetchArtists();
     }, [user]);
@@ -35,6 +38,18 @@ export default function Artist() {
         }
     }
 
+    function askDelete(artist) {
+        setArtistToDelete(artist);
+        setConfirmOpen(true);
+    }
+    async function confirmDelete() {
+        if (!artistToDelete) return;
+
+        await onDelete(artistToDelete._id);
+        setConfirmOpen(false);
+        setArtistToDelete(null);
+    }
+
     async function onDelete(artistId) {
         try {
             const response = await fetch(`https://sdlb-backend.vercel.app/artists/delete/${artistId}`, {
@@ -55,7 +70,7 @@ export default function Artist() {
     );
     let artistsToDisplay = filteredArtists.map((a) => {
         return (
-            <ArtistCard artist={a} onDelete={onDelete} />
+            <ArtistCard artist={a} onDelete={onDelete} key={a._id} onAskDelete={() => askDelete(a)} />
         )
     })
 
@@ -98,6 +113,13 @@ export default function Artist() {
             {isModalOpen && (
                 <AddArtistModal onClose={() => setIsModalOpen(false)} token={user.token} fetchArtists={fetchArtists} />
             )}
+            <ConfirmModal
+                isOpen={confirmOpen}
+                title="Supprimer l'artiste"
+                message={`Es-tu sûr de vouloir supprimer "${artistToDelete?.name}" ?`}
+                onConfirm={confirmDelete}
+                onCancel={() => setConfirmOpen(false)}
+            />
         </div>
     );
 }

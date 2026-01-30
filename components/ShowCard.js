@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 
-export default function ShowCard({ show, onDelete }) {
+export default function ShowCard({ show, onAskDelete }) {
     const router = useRouter();
 
     const handleClick = () => {
@@ -30,7 +30,7 @@ export default function ShowCard({ show, onDelete }) {
                 className={style.deleteButton}
                 onClick={(e) => {
                     e.stopPropagation(); // empêche la navigation
-                    onDelete(show._id);
+                    onAskDelete();
                 }}
             >
                 <FontAwesomeIcon icon={faTrash} />
