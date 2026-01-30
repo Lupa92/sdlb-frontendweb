@@ -16,10 +16,10 @@ export default function ModifyShowModal({
     const [date, setDate] = useState(
         show.date ? show.date.split("T")[0] : ""
     );
-    const [startTime, setStartTime] = useState(show.startTime || "");
-    const [endTime, setEndTime] = useState(show.endTime || "");
-    const [master, setMaster] = useState(show.masterOfCeremony._id || "");
-    const [status, setStatus] = useState(show.status || "DRAFT");
+    const [startTime, setStartTime] = useState(show?.startTime || "");
+    const [endTime, setEndTime] = useState(show?.endTime || "");
+    const [master, setMaster] = useState(show?.masterOfCeremony?._id || "");
+    const [status, setStatus] = useState(show?.status || "DRAFT");
 
     async function handleSave() {
         if (!number || !date || !startTime || !endTime) {
