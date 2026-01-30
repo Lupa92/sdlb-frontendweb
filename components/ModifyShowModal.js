@@ -20,9 +20,7 @@ export default function ModifyShowModal({
     const [endTime, setEndTime] = useState(show.endTime || "");
     const [master, setMaster] = useState(show.masterOfCeremony._id || "");
     const [status, setStatus] = useState(show.status || "DRAFT");
-    console.log("show", show)
-    console.log("masterUse", show.masterOfCeremony.name)
-    console.log(show.status)
+
     async function handleSave() {
         if (!number || !date || !startTime || !endTime) {
             dispatch(
@@ -42,7 +40,6 @@ export default function ModifyShowModal({
             masterOfCeremonyId: master,
             status: status,
         }
-        console.log("body", body)
 
         try {
             const response = await fetch(
