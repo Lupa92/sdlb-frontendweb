@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faCrown } from "@fortawesome/free-solid-svg-icons";
 import style from "../styles/ShowArtistCard.module.css";
 
 export default function ShowArtistCard({ showArtist, onAskDelete }) {
@@ -20,6 +20,9 @@ export default function ShowArtistCard({ showArtist, onAskDelete }) {
 
             <div className={style.name}>
                 {artist.name} {artist.lastName}
+                {artist.role === "MASTER" && (
+                    <FontAwesomeIcon icon={faCrown} className={style.masterIcon} color="#c13c8e" />
+                )}
             </div>
 
             {title && <div className={style.title}>Titre : {title}</div>}
