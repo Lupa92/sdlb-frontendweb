@@ -12,11 +12,18 @@ const internalPages = [
     "infos",
     "dates",
     "howtocome",
-    "accessibilité",
+    "accessibility",
     "ticketinfo",
     "plan",
     "faq",
     "sponsors",
+    "sleep",
+    "prohibiteditems",
+    "association",
+    "contact",
+    "credits",
+    "formapp"
+
 ];
 
 
@@ -156,16 +163,7 @@ export default function AddNewsModal({ onClose, token, fetchNews }) {
                                     value={button.link}
                                     onChange={(e) => handleButtonChange("link", e.target.value)}
                                 />
-                                <span
-                                    className={style.infoIcon}
-                                    data-tooltip={
-                                        button.type === "INTERNAL"
-                                            ? `Pour un lien interne, entrez le nom exact de la page parmi : ${internalPages.join(", ")}`
-                                            : "Entrez l'URL complète pour un lien externe"
-                                    }
-                                >
-                                    i
-                                </span>
+
                             </div>
 
                             {/* Message de validation centré */}
@@ -174,6 +172,16 @@ export default function AddNewsModal({ onClose, token, fetchNews }) {
                                     Nom de page invalide ! Choisissez parmi : {internalPages.join(", ")}
                                 </small>
                             )}
+                        </div>
+                        <div
+                            className={style.infoIcon}
+                            data-tooltip={
+                                button.type === "INTERNAL"
+                                    ? `Pour un lien interne, entrez le nom exact de la page parmi : ${internalPages.join(", ")}`
+                                    : "Entrez l'URL complète pour un lien externe"
+                            }
+                        >
+                            i
                         </div>
                         <select value={button.type} onChange={(e) => handleButtonChange("type", e.target.value)}>
                             <option value="">Sélectionnez le type</option>
