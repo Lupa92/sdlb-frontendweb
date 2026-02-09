@@ -61,7 +61,7 @@ export default function AddSponsorModal({ onClose, token, fetchSponsors }) {
                     </label>
 
                     <label>
-                        Logo
+                        Logo *
                         <input type="file" accept="image/*" onChange={handleLogoChange} />
                     </label>
 
