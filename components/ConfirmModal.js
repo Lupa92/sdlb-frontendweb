@@ -21,7 +21,7 @@ export default function ConfirmModal({
                         Annuler
                     </button>
                     <button className={style.confirm} onClick={onConfirm}>
-                        Supprimer
+                        Confirmer
                     </button>
                 </div>
             </div>
