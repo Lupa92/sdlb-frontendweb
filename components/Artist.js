@@ -23,9 +23,7 @@ export default function Artist() {
         try {
             const response = await fetch(`https://sdlb-backend.vercel.app/artists/getartists/${user.token}`)
             const data = await response.json();
-            console.log("data", data)
             if (data.result) {
-                console.log("data", data)
                 setArtists(data.artists);
             } else {
                 setArtists([]);
@@ -58,7 +56,6 @@ export default function Artist() {
                 body: JSON.stringify({ token: user.token }),
             })
             const data = await response.json();
-            console.log(data)
             fetchArtists()
 
         } catch (error) {

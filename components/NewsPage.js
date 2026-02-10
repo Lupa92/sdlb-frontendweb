@@ -61,7 +61,6 @@ export default function NewsPage() {
                 body: JSON.stringify({ token: user.token }),
             })
             const data = await response.json();
-            console.log(data)
             fetchNews()
 
         } catch (error) {

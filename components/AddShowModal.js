@@ -43,7 +43,6 @@ export default function AddShowModal({ onClose, token, mastersList, fetchShows }
             });
 
             const data = await response.json();
-            console.log("datafromFetch", data);
 
             if (data.result) {
                 dispatch(showFeedback({ message: "Show ajouté avec succès !", type: 'success' }));

@@ -9,9 +9,7 @@ export default function ArtistCard({ artist, onAskDelete }) {
     const router = useRouter();
 
     const handleClick = () => {
-        // Navigue vers la fiche artiste
         router.push(`/artist?id=${artist._id}`);
-        // console.log(artist._id)
     };
 
 

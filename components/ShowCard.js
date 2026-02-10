@@ -10,7 +10,6 @@ export default function ShowCard({ show, onAskDelete }) {
     const handleClick = () => {
         // Navigue vers la fiche show
         router.push(`/show?id=${show._id}`);
-        console.log(show._id)
     };
 
     return (

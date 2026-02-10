@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import styles from '../styles/Toast.module.css';
 
 export default function Toast() {
-    console.log("toast")
     const { message, type, visible } = useSelector((state) => state.feedback.value);
     const dispatch = useDispatch();
 

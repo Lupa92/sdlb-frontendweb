@@ -46,7 +46,6 @@ export default function Login() {
             setEmail("");
             setError("");
             setPassword("");
-            console.log("YEAH")
             router.push("/home");
         } catch (error) {
             console.log({ result: false, error: error.message })

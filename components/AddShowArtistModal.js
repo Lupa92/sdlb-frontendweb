@@ -38,7 +38,6 @@ export default function AddShowArtistModal({ onClose, artists, token, refreshSho
             });
 
             const data = await response.json();
-            console.log("datafromFetch", data);
 
             if (data.result) {
                 dispatch(showFeedback({ message: "Créneau Artiste ajouté avec succès !", type: 'success' }));

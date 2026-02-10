@@ -39,7 +39,6 @@ export default function ShowComponent({
         (a, b) => a.order - b.order
     );
     const masters = artists.filter((a) => a.role === "MASTER")
-    console.log("master", masters)
 
     // Fonction pour delete le showArtist
     function askDelete(showArtist) {

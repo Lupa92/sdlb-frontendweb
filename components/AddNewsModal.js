@@ -64,7 +64,6 @@ export default function AddNewsModal({ onClose, token, fetchNews }) {
             dispatch(showFeedback({ message: "Tous les champs obligatoires doivent être remplis", type: "error" }));
             return;
         }
-        console.log("button", button)
 
         // Validation du bouton si rempli
         const hasAnyField = button.label || button.link || button.type;
@@ -96,7 +95,6 @@ export default function AddNewsModal({ onClose, token, fetchNews }) {
 
             const data = await res.json();
             if (data.result) {
-                console.log("data from fetch add news avec push", data)
                 dispatch(showFeedback({ message: "Actualité ajoutée avec succès !", type: "success" }));
                 fetchNews();
                 onClose();

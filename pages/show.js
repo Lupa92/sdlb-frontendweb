@@ -22,7 +22,6 @@ function ShowPage() {
         setError("");
 
         try {
-            console.log("go get Show by ID")
             const response = await fetch(`https://sdlb-backend.vercel.app/shows/getshowbyid/${id}`, {
                 method: 'POST',
                 headers: {
@@ -33,7 +32,6 @@ function ShowPage() {
             });
 
             const data = await response.json();
-            console.log(data)
 
             if (!data.result) {
                 setError(data.error || "Erreur lors de la récupération du show");

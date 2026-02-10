@@ -20,7 +20,6 @@ function ArtistPage() {
         setError("");
 
         try {
-            console.log("go get Artist by ID")
             const response = await fetch(`https://sdlb-backend.vercel.app/artists/getartistbyid/${id}`, {
                 method: 'POST',
                 headers: {
@@ -31,7 +30,6 @@ function ArtistPage() {
             });
 
             const data = await response.json();
-            console.log(data)
 
             if (!data.result) {
                 setError(data.error || "Erreur lors de la récupération de la liste");

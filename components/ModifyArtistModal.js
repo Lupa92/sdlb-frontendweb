@@ -34,8 +34,6 @@ export default function ModifyArtistModal({ artist, onClose, token, refreshArtis
     };
 
     async function handleSave() {
-        console.log("token", token)
-        console.log("artistId", artist._id)
         const formData = new FormData();
         formData.append("token", token);
         formData.append("name", name);
@@ -66,7 +64,6 @@ export default function ModifyArtistModal({ artist, onClose, token, refreshArtis
             });
 
             const data = await res.json();
-            console.log(data);
 
             if (data.result) {
                 dispatch(showFeedback({ message: "Artiste modifié", type: 'success' }));

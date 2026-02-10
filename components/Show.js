@@ -24,7 +24,6 @@ export default function Show() {
             const response = await fetch(`https://sdlb-backend.vercel.app/shows/getshows/${user.token}`)
             const data = await response.json();
             if (data.result) {
-                console.log("data", data)
                 setShows(data.shows);
                 setMastersList(data.mastersList)
             } else {
@@ -59,7 +58,6 @@ export default function Show() {
                 body: JSON.stringify({ token: user.token }),
             })
             const data = await response.json();
-            console.log(data)
             fetchShows()
 
         } catch (error) {

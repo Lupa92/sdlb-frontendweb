@@ -67,10 +67,6 @@ export default function AddArtistModal({ onClose, token, fetchArtists }) {
             }
             try {
                 const compressedFile = await imageCompression(photo, options)
-
-                console.log("Avant :", (photo.size / 1024 / 1024).toFixed(2), "MB")
-                console.log("Après :", (compressedFile.size / 1024 / 1024).toFixed(2), "MB")
-
                 if (compressedFile.size / 1024 / 1024 > 3.5) {
                     dispatch(showFeedback({ message: "Image trop lourde après la compression, Merci de sélectionner une image plus légère", type: 'error' }));
                     return
@@ -106,7 +102,6 @@ export default function AddArtistModal({ onClose, token, fetchArtists }) {
             });
 
             const data = await res.json();
-            console.log(data);
 
             if (data.result) {
                 dispatch(showFeedback({ message: "Artiste ajouté avec succès !", type: 'success' }));
