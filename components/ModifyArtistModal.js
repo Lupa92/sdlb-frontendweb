@@ -113,10 +113,10 @@ export default function ModifyArtistModal({ artist, onClose, token, refreshArtis
                 {/* Description */}
                 <textarea
                     className={style.input}
-                    maxLength={500}
+                    maxLength={1000}
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    placeholder="Description (500 caractères max)"
+                    placeholder="Description (1000 caractères max)"
                 />
 
                 {/* Photo */}

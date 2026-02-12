@@ -154,10 +154,10 @@ export default function AddArtistModal({ onClose, token, fetchArtists }) {
                     <label>
                         Description (max 500 caractères)
                         <textarea
-                            maxLength={500}
+                            maxLength={1000}
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
-                            placeholder="Description"
+                            placeholder="Description (1000 caractères max)"
                         />
                         <small>{description.length}/500</small>
                     </label>
